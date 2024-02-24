@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/src/style.scss">
+  <title>Vite + TS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header class="header">
+
+      <img class="chocolate_menu" src="/images/circled_menu.png" alt="">
+
+      <a href="#">
+        <img class="logo" src="/images/trello_logo.webp" alt="">
+      </a>
+
+      <nav>
+
+        <ul>
+          <li><a href="#">Рабочие пространства
+              <i class="fas fa-caret-down"></i>
+            </a>
+
+            <div class="dropdown_menu">
+              <ul>
+                <li>
+                  <a href="#">Хронол..
+                    <i class="fas fa-caret-right"></i>
+                  </a>
+
+                  <div class="dropdown_menu_1">
+                    <ul>
+                      <li><a href="#">Структура</a></li>
+                      <li><a href="#">Как Использовать</a></li>
+                      <li><a href="#">Как Создать</a></li>
+                      <li><a href="#">What Is The Benefit</a></li>
+                    </ul>
+                  </div>
+
+                </li>
+                <li>
+                  <a href="#">Кален..
+                    <i class="fas fa-caret-right"></i>
+                  </a>
+
+                  <div class="dropdown_menu_1">
+                    <ul>
+                      <li><a href="#">Григорианский Календарь</a></li>
+                      <li><a href="#">Дизайн Календаря</a></li>
+                      <li><a href="#">Лунный Календарь</a></li>
+                      <li><a href="#">Настенный Календарь</a></li>
+                    </ul>
+                  </div>
+
+                </li>
+                <li><a href="#">Панель</a></li>
+                <li><a href="#">Таблица</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <a href="#">Недавние
+              <i class="fas fa-caret-down"></i>
+            </a>
+
+            <div class="dropdown_menu">
+              <ul>
+                <li><a href="#">Palace Law</a></li>
+                <li><a href="#">Instinct</a></li>
+                <li>
+                  <a href="#">Маркет..
+                    <i class="fas fa-caret-right"></i>
+                  </a>
+
+                  <div class="dropdown_menu_1">
+                    <ul>
+                      <li><a href="#">Speaker guide for online events</a></li>
+                      <li><a href="#">Marketing Content Catalog</a></li>
+                      <li><a href="#">Marketing Overview</a></li>
+                      <li><a href="#">Podcast Workflow Template</a></li>
+                    </ul>
+                  </div>
+
+                </li>
+                <li><a href="#">Scan2Cad</a></li>
+              </ul>
+            </div>
+
+          </li>
+
+          <li>
+            <a href="#">В избранном
+              <i class="fas fa-caret-down"></i>
+            </a>
+
+            <div class="dropdown_menu">
+              <ul>
+                <li>
+                  <a href="#">The Main Ones
+                    <i class="fas fa-caret-right"></i>
+                  </a>
+
+                  <div class="dropdown_menu_1">
+                    <ul>
+                      <li><a href="#">Desk Plants</a></li>
+                      <li><a href="#">SwagUp</a></li>
+                      <li><a href="#">ЮНИСЕФ</a></li>
+                      <li><a href="#">Burgerfi</a></li>
+                    </ul>
+                  </div>
+
+                </li>
+                <li><a href="#">Miro</a></li>
+                <li><a href="#">Jira Cloud</a></li>
+                <li><a href="#">Slack Power Up</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">Шаблоны
+              <i class="fas fa-caret-down"></i>
+            </a>
+            <div class="dropdown_menu">
+              <ul>
+                <li>
+
+                  <a href="#">Бизнес
+                    <i class="fas fa-caret-right"></i>
+                  </a>
+
+                  <div class="dropdown_menu_1">
+                    <ul>
+                      <li><a href="#">A Lead Management Pipeline by Crmble</a></li>
+                      <li><a href="#">Lean Canvas</a></li>
+                      <li><a href="#">Nonprofit Project Management</a></li>
+                      <li><a href="#">Nonprofit Volunteer Onboarding</a></li>
+                    </ul>
+
+                  </div>
+                </li>
+                <li><a href="#">Дизайн</a></li>
+
+                <li>
+                  <a href="#">Оброз..
+                    <i class="fas fa-caret-right"></i>
+                  </a>
+
+                  <div class="dropdown_menu_1">
+                    <ul>
+                      <li><a href="#">Remote Class Template</a></li>
+                      <li><a href="#">Ancademic Literature Review</a></li>
+                      <li><a href="#">Teaching Weekly Planning</a></li>
+                      <li><a href="#">Project Based Learning</a></li>
+                    </ul>
+                  </div>
+
+                </li>
+                <li><a href="#">Проектирование</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <a href="#">
+              <button class="header_btn" id="open-popup">Создать</button>
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="right">
+
+        <div class="search_wrap search_wrap_2">
+
+          <div class="search_box">
+
+            <div class="btn btn_common">
+              <i class="fas fa-search"></i>
+            </div>
+
+            <input type="search" placeholder="Поиск">
+          </div>
+
+        </div>
+
+        <div class="image">
+          <img src="/icons/bell.svg" alt="">
+          <img src="/icons/help-circle.svg" alt="">
+          <img width="32px" height="32px" src="/images/account.png" alt="">
+        </div>
+
+      </div>
+
+    </header>
+
+    <aside class="sidebar">
+      <div class="line"></div>
+      <div class="logo-details">
+
+        <!-- <img class="second_account" src="./img/account.png" alt=""> -->
+
+        <!--  <div class="account_and_texts"> -->
+
+        <div class="p_account">P</div>
+        <!-- <div class="texts">
+                    <span>PRODIGY:</span> рабочее
+                    пространство
+                    <div class="free">Бесплатно</div>
+                </div> -->
+
+        <span class="logo_name">PRODIGY: рабочее
+          пространство <br> Бесплатно
+        </span>
+
+        <!-- </div> -->
+
+
+        <!-- <i class='bx bxl-c-plus-plus'></i>
+            <span class="logo_name">Baxtzod</span> -->
+
+      </div>
+
+      <!-- <li>
+            <div class="profile-details">
+
+                <div class="profile-content">
+
+                    <img src="./img/account.png" alt="">
+
+                </div>
+
+                <div class="name-job">
+
+                    <div class="profile_name">Prem Shahi</div>
+                    <div class="job">Web Desginer</div>
+
+                </div>
+                <i class='bx bx-log-out'></i>
+            </div>
+        </li> -->
+
+      <ul class="nav-links">
+        <div class="line"></div>
+        <li>
+          <a href="#">
+            <i class='bx bxs-dashboard' style='color:#9fadbc'></i>
+            <span class="link_name">Доски</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Доски</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class='bx bxs-user' style='color:#9fadbc'></i>
+              <span class="link_name">Участники</span>
+            </a>
+            <i class='bx bx-plus arrow' style='color:#9fadbc'></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" href="#">Участники</a></li>
+            <li><a href="#">Baxtzod</a></li>
+            <li><a href="#">Islom</a></li>
+            <li><a href="#">Shaxrina</a></li>
+            <li><a href="#">Axror</a></li>
+            <li><a href="#">Bekzod</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class='bx bxs-cog' style='color:#9fadbc'></i>
+              <span class="link_name">Настройки рабочего п..</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow' style='color:#9fadbc'></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" href="#">Настройки рабочего п..</a></li>
+            <li><a href="#">Bright</a></li>
+            <li><a href="#">Transparent</a></li>
+            <li><a href="#">Reading Mode</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bxs-bullseye' style='color:#9fadbc'></i>
+            <span class="link_name">Режимы просмотра..</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Режимы просмотра..</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-table' style='color:#9fadbc'></i>
+            <span class="link_name">Таблица</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Таблица</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-calendar' style='color:#9fadbc'></i>
+            <span class="link_name">Календарь</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Календарь</a></li>
+          </ul>
+        </li>
+        <li>
+          <div class="icon-link">
+            <a href="#">
+              <i class='bx bxs-chalkboard' style='color:#9fadbc'></i>
+              <span class="link_name">Мои доски</span>
+            </a>
+            <i class="bx bx-plus arrow" style="color:#9fadbc"></i>
+          </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" href="#">Мои доски</a></li>
+            <li><a href="#">Clear Board</a></li>
+            <li><a href="#">Beautifuly Board</a></li>
+            <li><a href="#">New Board</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bxs-rectangle' style='color:#CD5A91'></i>
+            <span class="link_name">Desk</span>
+          </a>
+          <ul class="sub-menu blank">
+            <li><a class="link_name" href="#">Desk</a></li>
+          </ul>
+        </li>
+        <!-- <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Setting</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Setting</a></li>
+                </ul>
+            </li> -->
+
+        <div class="line"></div>
+
+        <li>
+          <div class="profile-details">
+
+            <div class="profile-content">
+
+              <img src="/images/happy-human.webp" alt="">
+
+            </div>
+
+            <div class="name-job">
+
+              <div class="profile_name">Попробовать Premium</div>
+              <div class="job">бесплатно</div>
+
+            </div>
+            <i class='bx bxs-briefcase-alt' style='color:#1D2125'></i>
+          </div>
+        </li>
+
+      </ul>
+
+    </aside>
+
+    <section class="home-section">
+
+      <div class="home-content">
+
+        <i class='bx bx-chevron-left arrow' style="color: #948873;"></i>
+
+        <div class="left">
+          <div class="text">desk</div>
+          <i class='bx bx-star' style="color: #FFFFFF;"></i>
+          <i class='bx bxs-user-account' style="color: #FFFFFF;"></i>
+          <button class="btn"><i class='bx bxs-objects-vertical-top' style="color: #172B4D;"></i>По
+            доске</button>
+          <i class='bx bx-chevron-down' style="color: #FFFFFF"></i>
+        </div>
+
+        <div class="right">
+          <i class='bx bx-rocket' style="color: #FFFFFF;"></i>
+          <i class='bx bxs-cloud-lightning' style="color: #FFFFFF;"></i>
+          <i class='bx bx-align-justify' style="color: #FFFFFF;"></i>
+          <div class="filter_text">Фильтры</div>
+          <img width="32" height="32" src="/images/account.png" alt="">
+          <button class="btn"><i class='bx bx-user-plus' style="color: #172B4D;"></i>Поделиться</button>
+          <i class='bx bx-dots-horizontal-rounded' style="color: #FFFFFF;"></i>
+        </div>
+
+      </div>
+
+
+      <div class="blocks">
+
+        <div class="first_box">
+
+          <h4>Нужно сделать <i class='bx bx-dots-horizontal-rounded' style="color: #9FADBC;"></i></h4>
+
+          <!-- <div class="inner_block">
+            <span class="span_styling">Вступительное собрание</span>
+            <p class="p_styling">lorem ipsum dolor sit amet</p>
+          </div> -->
+
+        </div>
+
+        <div class="first_box">
+
+          <h4>В процессе <i class='bx bx-dots-horizontal-rounded' style="color: #9FADBC;"></i></h4>
+
+          <!-- <div class="inner_block">
+            <span class="span_styling">go home</span>
+          </div> -->
+
+          <!-- <div class="add_card">
+            <p><i class='bx bx-plus' style="color: #9FADBC;"></i> Добавить карточку <i class='bx bx-images'
+                style="color: #9FADBC;">
+              </i></p>
+          </div> -->
+
+        </div>
+
+        <div class="first_box">
+
+          <h4>Готово <i class='bx bx-dots-horizontal-rounded' style="color: #9FADBC;"></i></h4>
+
+          <!-- <div class="inner_block">
+                    <span>Вступительное собрание</span>
+                </div> -->
+
+          <!-- <div class="add_card">
+            <p><i class='bx bx-plus' style="color: #9FADBC;"></i> Добавить карточку <i class='bx bx-images'
+                style="color: #9FADBC;"> 
+              </i></p>
+          </div> -->
+
+        </div>
+
+        <!-- <div class="first_box">
+
+          <h4>go home <i class='bx bx-dots-horizontal-rounded' style="color: #9FADBC;"></i></h4>
+
+          <div class="inner_block">
+            <span>Вступительное собрание</span>
+          </div>
+
+          <div class="add_card">
+            <p><i class='bx bx-plus' style="color: #9FADBC;"></i> Добавить карточку <i class='bx bx-images'
+                style="color: #9FADBC;"></i></p>
+          </div>
+
+        </div> -->
+
+        <!-- <div class="add_another_column">
+          <p><i class='bx bx-plus' style="color: #FFFFFF;"></i> Добавить карточку</i></p>
+        </div> -->
+
+      </div>
+
+    </section>
+
+    <div class="popup" id="popup">
+
+      <div class="overlay"></div>
+
+      <div class="popup-content">
+
+        <div class="controls_close_btn">
+
+          <button class="close-btn">X</button>
+
+        </div>
+
+        <h2>ADD NEW TODO</h2>
+
+        <div class="center_flex">
+
+          <form name="add_task">
+            <input type="text" name="title" placeholder="Заголовок">
+            <textarea name="description" cols="44" rows="3"></textarea>
+            <select name="status">
+              <option value="0">Нужно сделать</option>
+              <option value="1">В процессе</option>
+              <option value="2">Готово</option>
+            </select>
+            <div class="controls">
+              <button class="submit-btn">Submit</button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

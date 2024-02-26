@@ -1,17 +1,19 @@
 import { v4 as uuidv4 } from 'uuid';
 import { getData, postData } from './modules/http';
-import { reloadTasks } from './modules/ui';
+import { reloadTasks, setDragDrop } from './modules/ui';
 const form = document.forms.namedItem("add_task") as HTMLFormElement;
 // const places: any = document.querySelectorAll('.empty .col')
 const places: any = document.querySelectorAll('.first_box')
 
+setDragDrop(places)
+
 //
 // let todos: object = []
-let todos: any = []
-let temp: any = []
-let temp_id: any
+// let todos: any = []
+// let temp: any = []
+// let temp_id: any
 
-console.log(todos);
+// console.log(todos);
 //
 
 form.onsubmit = (event: Event) => {
@@ -46,60 +48,67 @@ form.onsubmit = (event: Event) => {
     })
 }
 
+getData('/todos')
+  .then((res:any) => {
+    if (res.status === 200 || res.status === 201) {
+      reloadTasks({arr: res.data, places})
+    }
+  })
+
 // temp.forEach((item?: any) => {
 //   if (item && item.id === temp_id) {
 //     temp.append(item);
 //   }
 // });
 
-temp.forEach((item: any) => {
-  item.addEventListener('dragstart', dragStart)
-  item.addEventListener('dragend', dragEnd)
-})
+// temp.forEach((item: any) => {
+//   item.addEventListener('dragstart', dragStart)
+//   item.addEventListener('dragend', dragEnd)
+// })
 
-for (let empty of places) {
-  empty.addEventListener('dragover', dragOver)
-  empty.addEventListener('dragenter', dragEnter)
-  empty.addEventListener('dragleave', dragLeave)
-  empty.addEventListener('drop', dragDrop)
-}
+// for (let empty of places) {
+//   empty.addEventListener('dragover', dragOver)
+//   empty.addEventListener('dragenter', dragEnter)
+//   empty.addEventListener('dragleave', dragLeave)
+//   empty.addEventListener('drop', dragDrop)
+// }
 
-function dragStart(this: HTMLElement) {
-  console.log('dragStart');
-  temp_id = this.id;
-  this.classList.add('hold');
-  setTimeout(() => (this.className = 'invisible'), 0);
-}
+// function dragStart(this: HTMLElement) {
+//   console.log('dragStart');
+//   temp_id = this.id;
+//   this.classList.add('hold');
+//   setTimeout(() => (this.className = 'invisible'), 0);
+// }
 
-function dragEnd(this: HTMLElement) {
-  console.log('dragEnd');
-  this.className = 'fill';
-}
+// function dragEnd(this: HTMLElement) {
+//   console.log('dragEnd');
+//   this.className = 'fill';
+// }
 
-function dragOver(event: DragEvent) {
-  event.preventDefault();
-}
+// function dragOver(event: DragEvent) {
+//   event.preventDefault();
+// }
 
-function dragEnter(this: HTMLElement, event: DragEvent) {
-  console.log('dragEnter');
-  event.preventDefault();
-  this.classList.add('hovered');
-}
+// function dragEnter(this: HTMLElement, event: DragEvent) {
+//   console.log('dragEnter');
+//   event.preventDefault();
+//   this.classList.add('hovered');
+// }
 
-function dragLeave(this: HTMLElement) {
-  console.log('dragLeave');
-  this.className = 'first_box';
-}
+// function dragLeave(this: HTMLElement) {
+//   console.log('dragLeave');
+//   this.className = 'first_box';
+// }
 
-function dragDrop(this: HTMLElement) {
-  console.log('dragDrop');
-  this.className = 'first_box';
-  todos.forEach((item:any) => {
-      if (item.id === temp_id) {
-        this.append(item);
-      }
-  });
-}
+// function dragDrop(this: HTMLElement) {
+//   console.log('dragDrop');
+//   this.className = 'first_box';
+//   todos.forEach((item:any) => {
+//       if (item.id === temp_id) {
+//         this.append(item);
+//       }
+//   });
+// }
 
 const arrow: NodeListOf<Element> = document.querySelectorAll('.arrow');
 const sidebar: HTMLElement | null = document.querySelector('.sidebar');

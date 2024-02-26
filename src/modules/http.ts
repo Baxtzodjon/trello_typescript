@@ -20,3 +20,13 @@ export const postData = async (path: string, body: object) => {
         alert('Network error')
     }
 }
+
+export const patchData = async (path: string, body: object) => {
+    try {
+        const res = await axios.patch(base + path, body)
+
+        return res
+    } catch(e) {
+        alert('Network error')
+    }
+}

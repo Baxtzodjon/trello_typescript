@@ -1,9 +1,10 @@
-import { patchData } from "./http";
+import { deleteData, patchData } from "./http";
 
 type Task = {
+    id: string;
     title: string;
     desciption: string;
-    status: any; //number;
+    status: number;
 }
 
 type reloadTaskProps = {
@@ -18,37 +19,62 @@ export function reloadTasks({ arr, places }: reloadTaskProps): void {
         const inner_block = document.createElement('div')
         const title = document.createElement('span')
         const desciption = document.createElement('p')
+        const image = document.createElement('img')
 
         inner_block.classList.add('inner_block')
         title.classList.add('span_styling')
         desciption.classList.add('p_styling')
+        image.classList.add('delete-button')
         inner_block.draggable = true
 
-        inner_block.setAttribute('id', item.status);
+        inner_block.setAttribute('id', item.id);
         console.log(inner_block);
+        image.setAttribute('src', '/images/trash_icon.png')
+        image.setAttribute('alt', 'trash icon')
 
         title.innerHTML = item.title
         desciption.innerHTML = item.desciption
 
         inner_block.append(title, desciption)
         places[item.status].append(inner_block)
+        document.body.append(image)
 
 
-        inner_block.ondragstart = () => function() {
+        inner_block.ondragstart = function() {
             inner_block.classList.add('hold');
-            setTimeout(() => (inner_block.className = 'invisible'), 0);
+            setTimeout(() => {inner_block.className = 'invisible'}, 0);
+
+            if (ondragstart) {
+                image.style.display = 'none'
+            } else {
+                image.style.display = 'block'
+            }
         };
 
         inner_block.ondragend = () => {
             inner_block.className = 'inner_block' // fill
+
+            if (ondragend) {
+                image.style.display = 'block'
+            } else {
+                image.style.display = 'none'
+            }
         };
 
-        // places[item.status].innerHTML += `
-        // <div class="inner_block" draggable="true">
-        //     <span class="span_styling">${item.title}</span>
-        //     <p class="p_styling">${item.desciption}</p>
-        //   </div>
-        // `;
+        image.ondragover = (event: DragEvent) => {
+            event.preventDefault();
+            const element = document.elementFromPoint(event.clientX, event.clientY) as HTMLElement;
+            
+            if (element) {
+                const blockToRemove = element;
+                blockToRemove.remove();
+
+                deleteData(`/todos/${item.id}`)
+                    .then(res => {
+                        console.log(res);
+                    })
+            }
+        }; 
     }
 }
 
@@ -67,51 +93,17 @@ export function setDragDrop(places: any) {
             item.className = 'first_box';
         };
 
-        // item.ondrop = () => {
-        //     item.className = 'first_box';
-        //     let selectedCard = document.querySelector('.inner_block')
-        //     item.append(selectedCard)
-        //     patchData
-        // };
-
-        // item.ondrop = () => {
-        //     item.className = 'first_box';
-        //     let selectedCard: any = document.querySelector('.inner_block')
-        //     let status = selectedCard.getAttribute('data-status');
-        //     item.append(selectedCard)
-        
-        //     const path = '/todos/id';
-        //     const body = { status: status};
-        //     patchData(path, body);
-        // };
-
-        // item.ondrop = () => {
-        //     item.className = 'first_box';
-        //     let selectedCard: any = document.querySelector('.inner_block');
-        //     let status: string = selectedCard.getAttribute('id') || '';
-        //     console.log(status);
-        //     item.append(selectedCard);
-        
-        //     const taskId: string = selectedCard.dataset.id || '';
-        //     const path: string = `/todos/${taskId}`;
-        //     const body: { status: string } = { status: status };
-        //     patchData(path, body);
-        // };
-
         item.ondrop = () => {
             item.className = 'first_box';
-            let selectedCard: HTMLElement | null = document.querySelector('.inner_block');
+            let selectedCard: HTMLElement | null = document.querySelector('.invisible');
             if (selectedCard) {
-                let status: string = selectedCard.getAttribute('id') || '';
-                console.log(status);
+                let id: string | null = selectedCard.getAttribute('id') || null;
                 item.append(selectedCard);
-        
-                const taskId: string = selectedCard.dataset.id || '';
-                console.log(taskId);
                 
-                const path: string = `/todos/$\{taskId\}`;
-                const body: { status: string } = { status: status };
-                patchData(path, body);
+                const path: string = `/todos/${id}`;
+                
+                patchData(path, {status: item.dataset.status})
+                    .then(res => console.log(res))
             }
         };
     }

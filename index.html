@@ -16,7 +16,7 @@
 
 <body>
 
-  <div class="container">
+  <div class="container" id="online">
 
     <header class="header">
 
@@ -413,7 +413,7 @@
 
       <div class="blocks">
 
-        <div class="first_box" data-status="Нужно сделать">
+        <div class="first_box" data-status="0">
 
           <h4>Нужно сделать <i class='bx bx-dots-horizontal-rounded' style="color: #9FADBC;"></i></h4>
 
@@ -424,7 +424,7 @@
 
         </div>
 
-        <div class="first_box" data-status="В процессе">
+        <div class="first_box" data-status="1">
 
           <h4>В процессе <i class='bx bx-dots-horizontal-rounded' style="color: #9FADBC;"></i></h4>
 
@@ -440,7 +440,7 @@
 
         </div>
 
-        <div class="first_box" data-status="Готово">
+        <div class="first_box" data-status="2">
 
           <h4>Готово <i class='bx bx-dots-horizontal-rounded' style="color: #9FADBC;"></i></h4>
 
@@ -516,6 +516,12 @@
 
   </div>
 
+  <div id="offline">
+    <i class='bx bx-wifi-off' style="color: #9FADBC;"></i>
+    <h1>Please Check Your Internet Connection</h1>
+  </div>
+
+  
   <script type="module" src="/src/main.ts"></script>
 </body>
 

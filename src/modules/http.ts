@@ -30,3 +30,13 @@ export const patchData = async (path: string, body: object) => {
         alert('Network error')
     }
 }
+
+export const deleteData = async (path: string) => {
+    try {
+        const res = await axios.delete(base + path)
+
+        return res
+    } catch(e) {
+        alert('Network error')
+    }
+}

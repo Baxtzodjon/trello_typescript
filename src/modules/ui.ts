@@ -19,23 +19,28 @@ export function reloadTasks({ arr, places }: reloadTaskProps): void {
         const inner_block = document.createElement('div')
         const title = document.createElement('span')
         const desciption = document.createElement('p')
+        const change_icon = document.createElement('img')
         const image = document.createElement('img')
 
         inner_block.classList.add('inner_block')
         title.classList.add('span_styling')
         desciption.classList.add('p_styling')
+        change_icon.classList.add('change_icon')
         image.classList.add('delete-button')
+        image.classList.add('icon')
         inner_block.draggable = true
 
         inner_block.setAttribute('id', item.id);
         console.log(inner_block);
+        change_icon.setAttribute('src', '/icons/edit.svg')
+        change_icon.setAttribute('alt', 'edit svg')
         image.setAttribute('src', '/images/trash_icon.png')
         image.setAttribute('alt', 'trash icon')
 
         title.innerHTML = item.title
         desciption.innerHTML = item.desciption
 
-        inner_block.append(title, desciption)
+        inner_block.append(title, desciption, change_icon)
         places[item.status].append(inner_block)
         document.body.append(image)
 
@@ -63,6 +68,14 @@ export function reloadTasks({ arr, places }: reloadTaskProps): void {
 
         image.ondragover = (event: DragEvent) => {
             event.preventDefault();
+        };
+
+        image.ondragenter = (event: DragEvent) => {
+            event.preventDefault();
+        };
+
+        image.ondrop = (event: DragEvent) => {
+            event.preventDefault();
             const element = document.elementFromPoint(event.clientX, event.clientY) as HTMLElement;
             
             if (element) {
@@ -70,11 +83,22 @@ export function reloadTasks({ arr, places }: reloadTaskProps): void {
                 blockToRemove.remove();
 
                 deleteData(`/todos/${item.id}`)
-                    .then(res => {
-                        console.log(res);
+                    .then((res: any) => {
+                        if (res.status === 200 || res.status === 201) {
+                            inner_block.remove()
+                            console.log(res);
+                        }
                     })
             }
-        }; 
+        };
+
+        change_icon.addEventListener("dblclick", function() {
+            document.querySelector('.popup_2')?.classList.add('active');
+        });
+
+        document.querySelector('.popup_2 .close-btn_2')?.addEventListener('click', function() {
+            document.querySelector('.popup_2')?.classList.remove('active')
+        })
     }
 }
 

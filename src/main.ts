@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
-import { getData, postData } from './modules/http';
+import { getData, patchData, postData } from './modules/http';
 import { reloadTasks, setDragDrop } from './modules/ui';
 const form = document.forms.namedItem("add_task") as HTMLFormElement;
+const change_form = document.forms.namedItem("change_task") as HTMLFormElement
 // const places: any = document.querySelectorAll('.empty .col')
 const places: any = document.querySelectorAll('.first_box')
 
@@ -37,6 +38,53 @@ form.onsubmit = (event: Event) => {
           })
       }
     })
+
+    // patchData('/todos/', todo)
+    //   .then((res: any) => {
+    //     if (res.status === 200) {
+    //       getData('/todos')
+    //         .then((res: any) => {
+    //           if (res.status === 200 || res.status === 201) {
+    //             reloadTasks({ arr: res.data, places})
+    //           }
+    //         })
+    //     }
+    //   })
+    
+}
+
+change_form.onsubmit = (event: Event) => {
+  event.preventDefault()
+
+  const fm = new FormData(change_form)
+
+  const id = form.id
+  
+  console.log(id);
+  
+  const updateTodo = {
+    title: fm.get('title'),
+    desciption: fm.get('description'),
+  }
+
+  console.log(updateTodo);
+
+  const { title, desciption } = updateTodo
+  
+  if (!title || !desciption) return
+
+  patchData(`/todos/${id}`, updateTodo)
+    .then((res: any) => {
+      if (res.status === 200) {
+        getData('/todos')
+          .then((res: any) => {
+            if (res.status === 200 || res.status === 201) {
+              reloadTasks({ arr: res.data, places })
+            }
+          })
+      }
+    })
+
 }
 
 getData('/todos')
